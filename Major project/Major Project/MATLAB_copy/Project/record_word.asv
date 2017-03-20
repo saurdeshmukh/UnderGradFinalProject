@@ -1,0 +1,151 @@
+function record_word(word)
+   
+
+
+switch word
+    case 'SIGN'
+        [sign]=recording();
+        n=1;
+        while(abs(sign(n))<0.135)
+        n=n+1;
+        end   
+        SI=sign(n:n+4500);
+        max=0;
+        for i=1:4500
+            if(abs(SI(i))>max)
+                max=abs(SI(i));
+            end
+        end
+        for i=1:4500
+            SI(i)=SI(i)/max;
+        end
+        wavwrite(SI,16000,'SI.wav');
+        %end of case SIGN
+    case 'MULTIPLE'
+        [multiple]=recording();
+        n=1;
+        while(abs(multiple(n))<0.135)
+        n=n+1;
+        end   
+        MUL=multiple(n:n+6000);
+        max=0;
+        for i=1:6000
+            if(abs(MUL(i))>max)
+                max=abs(MUL(i));
+            end
+        end
+        for i=1:6000
+            MUL(i)=MUL(i)/max;
+        end
+        wavwrite(MUL,16000,'MUL.wav');
+        %end of case MULTIPLE
+    case 'TEN'
+        [ten]=recording();
+        n=1;
+        while(abs(ten(n))<0.135)
+        n=n+1;
+        end   
+        TE=ten(n:n+3500);
+        max=0;
+        for i=1:3500
+            if(abs(TE(i))>max)
+                max=abs(TE(i));
+            end
+        end
+        for i=1:3500
+            TE(i)=TE(i)/max;
+        end
+        wavwrite(TE,16000,'TE.wav');
+        %end of word TE
+        n=n+3500;
+        NA=ten(n:n+4000);
+        max=0;
+        for i=1:4000
+            if(abs(NA(i))>max)
+                max=abs(NA(i));
+            end
+        end
+        for i=1:4000
+            NA(i)=NA(i)/max;
+        end
+        wavwrite(NA,16000,'NA.wav');
+      %end of word NA
+      %end of case TEN
+      case 'GENIUS'
+        [genius]=recording();
+        n=1;
+        while(abs(genius(n))<0.135)
+        n=n+1;
+        end   
+        GE=genius(n:n+5000);
+        max=0;
+        for i=1:5000
+            if(abs(GE(i))>max)
+                max=abs(GE(i));
+            end
+        end
+        for i=1:5000
+            GE(i)=GE(i)/max;
+        end
+        wavwrite(GE,16000,'GE.wav');
+        %end of word GE
+        n=n+5000;
+        NIUS=genius(n:n+10000);
+        max=0;
+        for i=1:10000
+            if(abs(NIUS(i))>max)
+                max=abs(NIUS(i));
+            end
+        end
+        for i=1:10000
+            NIUS(i)=NIUS(i)/max;
+        end
+        wavwrite(NIUS,16000,'NIUS.wav');
+      %end of word NIUS
+      %end of case GENIUS
+      case 'CLOSELY'
+        [closely]=recording();
+        n=1;
+        while(abs(closely(n))<0.135)
+        n=n+1;
+        end   
+        CLO=closely(n:n+4000);
+        max=0;
+        for i=1:4000
+            if(abs(CLO(i))>max)
+                max=abs(CLO(i));
+            end
+        end
+        for i=1:4000
+            CLO(i)=CLO(i)/max;
+        end
+        wavwrite(CLO,16000,'CLO.wav');
+        %end of word CLO
+        n=n+4000;
+        ZH=closely(n:n+3000);
+        max=0;
+        for i=1:3000
+            if(abs(ZH(i))>max)
+                max=abs(ZH(i));
+            end
+        end
+        for i=1:3000
+            ZH(i)=ZH(i)/max;
+        end
+        wavwrite(ZH,16000,'ZH.wav');
+      %end of word ZH
+       n=n+3000;
+        L=closely(n:n+3000);
+        max=0;
+        for i=1:3000
+            if(abs(ZH(i))>max)
+                max=abs(ZH(i));
+            end
+        end
+        for i=1:3000
+            ZH(i)=ZH(i)/max;
+        end
+        wavwrite(ZH,16000,'ZH.wav');
+      %end of word ZH
+      %end of case TEN
+

@@ -1,0 +1,11 @@
+clc;
+clear all;
+close all;
+
+ FID = fopen('samp.txt', 'a');
+ CStr = textread('samp.txt', '%s', 'delimiter', '\n');
+%  length(CStr)
+ st='ABCDEFGH';
+% 
+% fclose(FID);
+dlmwrite('samp.txt',st,'newline','-append','delimiter');

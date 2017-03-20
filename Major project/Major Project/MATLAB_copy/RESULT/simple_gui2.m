@@ -1,0 +1,132 @@
+
+%global selected_string1 
+%global selected_string2
+%global selected_string3;
+function simple_gui2
+%global selected_string1 
+%global selected_string2
+%global selected_string3;
+% Create and then hide the GUI as it is being constructed. 
+f = figure('Visible','off','Position',[360,500,450,285]);
+hplay = uicontrol('Style','pushbutton','String','PLAY','Position',[315,170,70,25],'Callback',{@T2S_Callback});
+hrecord = uicontrol('Style','pushbutton','String','RECORD','Position',[50,170,70,25],'Callback',{@record_word_Callback}); 
+htest = uicontrol('Style','pushbutton','String','TEST','Position',[50,70,70,25],'Callback',{@SOUND_Callback});
+hpopPlay = uicontrol('Style','popupmenu','String',{'SEE','SEEK','SICK'},'Position',[315,200,100,25],'Callback',{@popup_T2S_Callback});
+hpopRec = uicontrol('Style','popupmenu','String',{'Aptitude','Cake','CITY','Multiple','Nation','Probable','Simply'},'Position',[50,200,100,25],'Callback',{@popup_record_word_Callback});
+hpopTest = uicontrol('Style','popupmenu','String',{'\SEE\','\TEE\','\MAL\','\MULTI\','\PAL\','\KE\','\KA\','\NE\','\TION\','\AP\','\APTI\','\TUDE\','\SIM\','\PLEE\','\PRO\','\BE\','\BAL\'},'Position',[50,100,100,25],'Callback',{@popup_SOUND_Callback});
+htext = uicontrol('Style','text','String','Text to Speech','Position',[300,230,150,20]);
+htext1 = uicontrol('Style','text','String','Training','Position',[50,230,100,20]);
+% ha = axes('Units','pixels','Position',[50,60,200,185]);
+% align([hsurf,hmesh,hcontour,htext,hpopup],'Center','None');
+% Initialize the GUI. 
+% Change units to normalized so components resize automatically. 
+set([f,hplay,hrecord,htest,hpopPlay,htext,hpopTest,hpopRec,htext1],'Units','normalized');
+% Generate the data to plot. 
+% peaks_data = peaks(35);
+% membrane_data = membrane;
+% [x,y] = meshgrid(-8:.5:8);
+% r = sqrt(x.^2+y.^2) + eps;
+% sinc_data = sin(r)./r;
+% % Create a plot in the axes.
+% current_data = peaks_data;
+% surf(current_data);
+% Assign the GUI a name to appear in the window title.
+set(f,'Name','T2S GUI')
+% Move the GUI to the center of the screen.
+movegui(f,'center')
+% Make the GUI visible. 
+set(f,'Visible','on')
+global selected_string1 
+global selected_string2
+global selected_string3;
+function popup_T2S_Callback(~,source, ~, ~)
+% % Determine the selected data set.
+global selected_string1 
+global selected_string2
+global selected_string3;
+
+str = get(source, 'String');
+val = get(source,'Value');
+% Set current data to the selected data set.
+switch str{val}
+case 'SEE' % User selects Peaks.
+selected_string1 = 'SEE';
+case 'SEEK' % User selects Membrane.
+selected_string1 = 'SEEK';
+case 'SICK' % User selects Sinc.
+selected_string1 = 'SICK';
+end
+% val = get(hObject,'Value'); 
+% string_list = get(hObject,'String');
+% selected_string1 = string_list{val}; % Convert from cell array % to strin
+end
+function popup_record_word_Callback(~,~,hObject)
+% Determine the selected data set.
+global selected_string1 
+global selected_string2
+global selected_string3;
+
+
+
+val = get(hObject,'Value'); 
+string_list = get(hObject,'String');
+selected_string2 = string_list{val}; % Convert from cell array % to strin
+% % val = get(source,'Value');
+% % Set current data to the selected data set.
+% switch str{val};
+% case 'Peaks' % User selects Peaks.
+% current_data = peaks_data;
+% case 'Membrane' % User selects Membrane.
+% current_data = membrane_data;
+% case 'Sinc' % User selects Sinc.
+% current_data = sinc_data;
+% end
+end
+function popup_SOUND_Callback(~,~,hObject)
+% Determine the selected data set.
+global selected_string1 
+global selected_string2
+global selected_string3;
+
+
+
+val = get(hObject,'Value'); 
+string_list = get(hObject,'String');
+selected_string3 = string_list{val}; 
+
+% % val = get(source,'Value');
+% % Set current data to the selected data set.
+% switch str{val};
+% case 'Peaks' % User selects Peaks.
+% current_data = peaks_data;
+% case 'Membrane' % User selects Membrane.
+% current_data = membrane_data;
+% case 'Sinc' % User selects Sinc.
+% current_data = sinc_data;
+% end
+end
+function T2S_Callback(~,~) % Display surf plot of the currently selected data. 
+global selected_string1 
+global selected_string2
+global selected_string3;
+
+    T2S(selected_string1);
+end
+function record_word_Callback(~,~) % Display mesh plot of the currently selected data.
+% global selected_string1 
+% global selected_string2
+% global selected_string3;
+    record_word(selected_string2);
+end
+function SOUND_Callback(~,~) % Display contour plot of the currently selected data.
+% global selected_string1 
+% global selected_string2
+% global selected_string3;
+    
+    
+    SOUND(selected_string3);
+end
+
+
+
+end

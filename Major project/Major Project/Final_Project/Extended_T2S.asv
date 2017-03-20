@@ -1,0 +1,22 @@
+function Extended_T2S(str)
+FD = fopen('PHONEMES.txt', 'rb');
+tem = textread('PHONEMES.txt', '%s', 'delimiter', '\n');
+for i=1:length(tem)
+    if strcmp(tem{i},str)
+        break;
+    end
+end
+j=i;
+while(strcmp(tem{j},'$'))
+    j=j+1;
+end
+v=[];
+for k=i+1:j-1
+    a(k-i)=TT2SS(tem{k});
+    v=[v a(k-i)];
+end
+
+
+    
+fclose(FD);
+end
